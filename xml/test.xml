@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.bookinfra.testing.bookinfra.viewModels.companyDetailViewModels.CompanyDetailViewModel" />
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_medium">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangular_bg_cyan"
+        android:padding="@dimen/spacing_middle"
+        android:text="@string/company_documents"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/text_size_form"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_middle"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="@string/company_type"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/text_size_form" />
+
+        <Spinner
+            android:entries="@{viewmodel.companyTypeList}"
+            android:selectedItemPosition="@={viewmodel.selectedCompanyType}"
+            android:id="@+id/companyDetail_companyTye_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spinner_height"
+            android:layout_marginStart="@dimen/spacing_middle"
+            android:layout_marginLeft="@dimen/spacing_middle"
+            android:background="@drawable/custom_spinner_bg" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:text="@string/instructions"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/text_size_form"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/all_documents_should_be_signed_and_stamped"
+        android:textColor="@color/colorCyan"
+        android:textSize="@dimen/text_size_form" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/companyDetail_incorporationCertificate_til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:hint="@string/certificate_of_incorporation"
+        app:endIconDrawable="@drawable/ic_arrow_upward"
+        app:endIconMode="custom"
+        android:visibility="@{viewmodel.visibilityIncorp}"
+        app:endIconTint="@color/colorGreen"
+        app:hintTextColor="@color/colorText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/companyDetail_incorporationCertificate_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:text="@{viewmodel.incorporationCertificateDoc}"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:textColor="@color/colorText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/companyDetail_authSignatoryKyc_til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:hint="@string/kyc_of_the_authorized_signatory"
+        app:endIconDrawable="@drawable/ic_arrow_upward"
+        app:endIconMode="custom"
+        android:visibility="@{viewmodel.visibilityKyc}"
+        app:endIconTint="@color/colorGreen"
+        app:hintTextColor="@color/colorText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/companyDetail_authSignatoryKyc_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:maxLines="1"
+            android:text="@{viewmodel.kycDoc}"
+            android:scrollHorizontally="true"
+            android:textColor="@color/colorText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/companyDetail_authSignatoryPanCard_til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:hint="@string/pan_card_of_authorised_signatory"
+        android:visibility="@{viewmodel.visibilityPanSignatory}"
+        app:endIconDrawable="@drawable/ic_arrow_upward"
+        app:endIconMode="custom"
+        app:endIconTint="@color/colorGreen"
+        app:hintTextColor="@color/colorText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/companyDetail_authSignatoryPanCard_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:maxLines="1"
+            android:text="@{viewmodel.panCardSignatoryDoc}"
+            android:scrollHorizontally="true"
+            android:textColor="@color/colorText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/companyDetail_authSignatoryDeclaration_til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:hint="@string/declaration_of_authorised_signatory"
+        android:visibility="@{viewmodel.visibilityDeclaration}"
+        app:endIconDrawable="@drawable/ic_arrow_upward"
+        app:endIconMode="custom"
+        app:endIconTint="@color/colorGreen"
+        app:hintTextColor="@color/colorText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/companyDetail_authSignatoryDeclaration_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:maxLines="1"
+            android:text="@{viewmodel.declarationDoc}"
+            android:scrollHorizontally="true"
+            android:textColor="@color/colorText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/companyDetail_bankAccountDetail_til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:hint="@string/bank_account_details"
+        android:visibility="@{viewmodel.visibilityBankAccount}"
+        app:endIconDrawable="@drawable/ic_arrow_upward"
+        app:endIconMode="custom"
+        app:endIconTint="@color/colorGreen"
+        app:hintTextColor="@color/colorText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/companyDetail_bankAccountDetail_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:maxLines="1"
+            android:text="@{viewmodel.bankAccountDoc}"
+            android:scrollHorizontally="true"
+            android:textColor="@color/colorText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/companyDetail_companyPanCard_til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:hint="@string/company_pan_card"
+        android:visibility="@{viewmodel.visibilityPanCompany}"
+        app:endIconDrawable="@drawable/ic_arrow_upward"
+        app:endIconMode="custom"
+        app:endIconTint="@color/colorGreen"
+        app:hintTextColor="@color/colorText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/companyDetail_companyPanCard_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:maxLines="1"
+            android:text="@{viewmodel.panCardCompanyDoc}"
+            android:scrollHorizontally="true"
+            android:textColor="@color/colorText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/companyDetail_associationArticle_til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:hint="@string/article_of_associations"
+        android:visibility="@{viewmodel.visibilityArticleAssociation}"
+        app:endIconDrawable="@drawable/ic_arrow_upward"
+        app:endIconMode="custom"
+        app:endIconTint="@color/colorGreen"
+        app:hintTextColor="@color/colorText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/companyDetail_associationArticle_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:maxLines="1"
+            android:text="@{viewmodel.articleAssociationDoc}"
+            android:scrollHorizontally="true"
+            android:textColor="@color/colorText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/companyDetail_gstNoProof_til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:hint="@string/gst_number_proof"
+        android:visibility="@{viewmodel.visibilityGst}"
+        app:endIconDrawable="@drawable/ic_arrow_upward"
+        app:endIconMode="custom"
+        app:endIconTint="@color/colorGreen"
+        app:hintTextColor="@color/colorText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/companyDetail_gstNoProof_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:maxLines="1"
+            android:text="@{viewmodel.gstNumberDoc}"
+            android:scrollHorizontally="true"
+            android:textColor="@color/colorText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/companyDetail_shareholderPoa_til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:hint="@string/poa_of_shareholder"
+        android:visibility="@{viewmodel.visibilityPoaShareholder}"
+        app:endIconDrawable="@drawable/ic_arrow_upward"
+        app:endIconMode="custom"
+        app:endIconTint="@color/colorGreen"
+        app:hintTextColor="@color/colorText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/companyDetail_shareholderPoa_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:maxLines="1"
+            android:text="@{viewmodel.shareholderPoaDoc}"
+            android:scrollHorizontally="true"
+            android:textColor="@color/colorText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/companyDetail_memorandum_til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:hint="@string/memorandum_of_association"
+        android:visibility="@{viewmodel.visibilityMemorandum}"
+        app:endIconDrawable="@drawable/ic_arrow_upward"
+        app:endIconMode="custom"
+        app:endIconTint="@color/colorGreen"
+        app:hintTextColor="@color/colorText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/companyDetail_memorandum_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:maxLines="1"
+            android:text="@{viewmodel.memorandumDoc}"
+            android:scrollHorizontally="true"
+            android:textColor="@color/colorText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/companyDetail_cmpProof_til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:hint="@string/company_proof"
+        android:visibility="@{viewmodel.visibilitycompanyProof}"
+        app:endIconDrawable="@drawable/ic_arrow_upward"
+        app:endIconMode="custom"
+        app:endIconTint="@color/colorGreen"
+        app:hintTextColor="@color/colorText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/companyDetail_cmpProof_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:maxLines="1"
+            android:text="@{viewmodel.companyProofDoc}"
+            android:scrollHorizontally="true"
+            android:textColor="@color/colorText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/companyDetail_80gAnd12aCerti_til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:hint="@string/_80g_and_12a_certificate"
+        android:visibility="@{viewmodel.visibilityGA}"
+        app:endIconDrawable="@drawable/ic_arrow_upward"
+        app:endIconMode="custom"
+        app:endIconTint="@color/colorGreen"
+        app:hintTextColor="@color/colorText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/companyDetail_80gAnd12aCerti_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:maxLines="1"
+            android:text="@{viewmodel.GACertificateDoc}"
+            android:scrollHorizontally="true"
+            android:textColor="@color/colorText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>
+</layout>
